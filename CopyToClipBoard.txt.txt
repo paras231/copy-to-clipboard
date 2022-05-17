@@ -1,0 +1,29 @@
+import React, { useState } from "react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+
+const Home = () => {
+  const [text, setText] = useState("");
+  const [copied, setCopied] = useState(false);
+  const copyHnadler = ()=>{
+    setCopied(true);
+  
+  }
+  return (
+    <>
+      <h1>Home</h1>
+      <textarea
+        onChange={(e) => setText(e.target.value)}
+        value={text}
+      style={{height:'200px'}}
+      ></textarea>
+      <CopyToClipboard text={text} onCopy={copyHnadler}>
+        <button style={{height:'200px'}}>Copy</button>
+      </CopyToClipboard>
+      {
+        copied?  <p style={{color:'red'}}>Copied!</p> : null
+      }
+    </>
+  ); 
+};
+
+export default Home;
